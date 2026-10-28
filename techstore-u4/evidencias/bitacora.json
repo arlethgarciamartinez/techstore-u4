@@ -1,0 +1,169 @@
+[
+ {
+  "caso": "E01",
+  "pedido": "O001",
+  "objetivo": "10%",
+  "estado_inicial": "DRAFT · 4 u · $2100.00",
+  "operacion": "discount_rate(order)",
+  "resultado": "descuento 10% (10%=True, 5%=False)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E02",
+  "pedido": "O002",
+  "objetivo": "0%",
+  "estado_inicial": "DRAFT · 2 u · $1050.00",
+  "operacion": "discount_rate(order)",
+  "resultado": "descuento 0% (10%=False, 5%=False)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E03",
+  "pedido": "O003",
+  "objetivo": "rechazo",
+  "estado_inicial": "DRAFT · 4 u · $2100.00",
+  "operacion": "confirm(): InvalidOrderData",
+  "resultado": "rechazo: No se puede confirmar: el cliente está inactivo",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E04",
+  "pedido": "O005",
+  "objetivo": "0%",
+  "estado_inicial": "DRAFT · 4 u · $2100.00",
+  "operacion": "discount_rate(order)",
+  "resultado": "descuento 0% (10%=False, 5%=False)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E05",
+  "pedido": "O006",
+  "objetivo": "5%",
+  "estado_inicial": "DRAFT · 1 u · $18000.00",
+  "operacion": "discount_rate(order)",
+  "resultado": "descuento 5% (10%=False, 5%=True)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E06",
+  "pedido": "O007",
+  "objetivo": "rechazo",
+  "estado_inicial": "DRAFT · 0 u · $0",
+  "operacion": "confirm(): InvalidOrderData",
+  "resultado": "rechazo: No se puede confirmar un pedido sin artículos",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E07",
+  "pedido": "O008",
+  "objetivo": "exito",
+  "estado_inicial": "DRAFT · 20 u · $2400.00",
+  "operacion": "confirm(): OK",
+  "resultado": "éxito: CONFIRMED",
+  "estado_final": "CONFIRMED",
+  "eventos": [
+   "OrderConfirmed"
+  ]
+ },
+ {
+  "caso": "E08",
+  "pedido": "O009",
+  "objetivo": "rechazo",
+  "estado_inicial": "DRAFT · 19 u · $2280.00",
+  "operacion": "add_item(SKU003 x2): OrderItemLimitExceeded",
+  "resultado": "rechazo: Un pedido no puede tener más de 20 unidades (intento: 21)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E09",
+  "pedido": "O010",
+  "objetivo": "0%",
+  "estado_inicial": "DRAFT · 2 u · $500.00",
+  "operacion": "discount_rate(order)",
+  "resultado": "descuento 0% (10%=False, 5%=False)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E10",
+  "pedido": "O011",
+  "objetivo": "0%",
+  "estado_inicial": "DRAFT · 3 u · $1500.00",
+  "operacion": "discount_rate(order)",
+  "resultado": "descuento 0% (10%=False, 5%=False)",
+  "estado_final": "DRAFT",
+  "eventos": []
+ },
+ {
+  "caso": "E11",
+  "pedido": "O012",
+  "objetivo": "rechazo envio",
+  "estado_inicial": "DRAFT · 1 u · $850.00",
+  "operacion": "confirm(): OK → ship(''): InvalidOrderData",
+  "resultado": "confirm OK; envío rechazado: El envío requiere número de guía",
+  "estado_final": "CONFIRMED",
+  "eventos": [
+   "OrderConfirmed"
+  ]
+ },
+ {
+  "caso": "E12",
+  "pedido": "O013",
+  "objetivo": "rechazo segunda",
+  "estado_inicial": "DRAFT · 1 u · $600.00",
+  "operacion": "confirm() #1: OK → confirm() #2: InvalidOrderTransition",
+  "resultado": "1ª OK; 2ª rechazada: No se puede confirmar un pedido en estado CONFIRMED",
+  "estado_final": "CONFIRMED",
+  "eventos": [
+   "OrderConfirmed"
+  ]
+ },
+ {
+  "caso": "E13",
+  "pedido": "O014",
+  "objetivo": "rechazo cancelacion",
+  "estado_inicial": "DRAFT · 1 u · $600.00",
+  "operacion": "confirm(): OK → ship('GUIA-001'): OK → cancel('cliente'): InvalidOrderTransition",
+  "resultado": "confirm+ship OK; cancelación rechazada: No se puede cancelar un pedido en estado SHIPPED",
+  "estado_final": "SHIPPED",
+  "eventos": [
+   "OrderConfirmed",
+   "OrderShipped"
+  ]
+ },
+ {
+  "caso": "E14",
+  "pedido": "O015",
+  "objetivo": "exito",
+  "estado_inicial": "DRAFT · 1 u · $450.00",
+  "operacion": "confirm(): OK → ship('GUIA-001'): OK → return_order(): OK",
+  "resultado": "éxito: termina en RETURNED",
+  "estado_final": "RETURNED",
+  "eventos": [
+   "OrderConfirmed",
+   "OrderShipped",
+   "OrderReturned"
+  ]
+ },
+ {
+  "caso": "E15",
+  "pedido": "O016",
+  "objetivo": "exito",
+  "estado_inicial": "DRAFT · 1 u · $2100.00",
+  "operacion": "confirm(): OK → ship('GUIA-001'): OK → deliver(): OK",
+  "resultado": "éxito: termina en DELIVERED",
+  "estado_final": "DELIVERED",
+  "eventos": [
+   "OrderConfirmed",
+   "OrderShipped",
+   "OrderDelivered"
+  ]
+ }
+]

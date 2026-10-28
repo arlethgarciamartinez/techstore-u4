@@ -1,0 +1,63 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /home/claude/techstore-u4
+plugins: platformdirs-4.13.0, anyio-4.15.1
+collecting ... collected 54 items
+
+tests/test_api.py::test_404_pedido_inexistente PASSED                   
+tests/test_api.py::test_get_pedido_con_descuento PASSED                 
+tests/test_api.py::test_listado_16 PASSED                               
+tests/test_api.py::test_confirmar_ok PASSED                             
+tests/test_api.py::test_confirmar_dos_veces_409 PASSED                  
+tests/test_api.py::test_confirmar_vacio_422 PASSED                      
+tests/test_api.py::test_confirmar_cliente_inactivo_422 PASSED           
+tests/test_api.py::test_envio_sin_guia_422 PASSED                       
+tests/test_api.py::test_flujo_completo_entrega PASSED                   
+tests/test_api.py::test_cancelar_desde_shipped_409 PASSED               
+tests/test_api.py::test_cancelar_ok PASSED                              
+tests/test_api.py::test_devolucion PASSED                               
+tests/test_api.py::test_agregar_item_21_unidades_422 PASSED             
+tests/test_api.py::test_agregar_item_ok_201 PASSED                      
+tests/test_api.py::test_body_invalido_422 PASSED                        
+tests/test_domain.py::test_money_negativo PASSED                        
+tests/test_domain.py::test_money_rechaza_float PASSED                   
+tests/test_domain.py::test_money_rechaza_no_finito PASSED               
+tests/test_domain.py::test_money_inmutable PASSED                       
+tests/test_domain.py::test_money_add_devuelve_nuevo_y_no_muta PASSED    
+tests/test_domain.py::test_money_monedas_distintas PASSED               
+tests/test_domain.py::test_item_cantidad_invalida[0] PASSED             
+tests/test_domain.py::test_item_cantidad_invalida[-1] PASSED            
+tests/test_domain.py::test_item_subtotal_calculado PASSED               
+tests/test_domain.py::test_carga_16_pedidos_todos_draft PASSED          
+tests/test_domain.py::test_pedido_o001 PASSED                           
+tests/test_domain.py::test_totales_manuales_manual PASSED               
+tests/test_domain.py::test_21_unidades_rechazadas_sin_modificar PASSED  
+tests/test_domain.py::test_20_unidades_exactas_permitidas PASSED        
+tests/test_domain.py::test_limite_cuenta_unidades_no_renglones PASSED   
+tests/test_domain.py::test_no_agrega_items_fuera_de_draft PASSED        
+tests/test_domain.py::test_cliente_inactivo_no_confirma PASSED          
+tests/test_domain.py::test_pedido_vacio_no_confirma PASSED              
+tests/test_domain.py::test_confirmacion_doble PASSED                    
+tests/test_domain.py::test_envio_sin_guia[] PASSED                      
+tests/test_domain.py::test_envio_sin_guia[   ] PASSED                   
+tests/test_domain.py::test_no_envia_desde_draft PASSED                  
+tests/test_domain.py::test_cancelar_desde_shipped_prohibido PASSED      
+tests/test_domain.py::test_cancelar_requiere_motivo PASSED              
+tests/test_domain.py::test_cancelar_desde_confirmed PASSED              
+tests/test_domain.py::test_flujo_entrega PASSED                         
+tests/test_domain.py::test_flujo_devolucion PASSED                      
+tests/test_domain.py::test_estados_terminales_no_avanzan PASSED         
+tests/test_domain.py::test_eventos_son_inmutables_y_con_timestamp PASSED
+tests/test_domain.py::test_descuentos_escenarios[O001-0.10] PASSED      
+tests/test_domain.py::test_descuentos_escenarios[O002-0] PASSED         
+tests/test_domain.py::test_descuentos_escenarios[O005-0] PASSED         
+tests/test_domain.py::test_descuentos_escenarios[O006-0.05] PASSED      
+tests/test_domain.py::test_descuentos_escenarios[O010-0] PASSED         
+tests/test_domain.py::test_descuentos_escenarios[O011-0] PASSED         
+tests/test_domain.py::test_total_con_descuento_no_modifica_pedido PASSED
+tests/test_domain.py::test_prioridad_10_sobre_5 PASSED                  
+tests/test_domain.py::test_specs_simples_y_composicion PASSED           
+tests/test_domain.py::test_spec_no_modifica_pedido PASSED               
+
+============================== 54 passed in 0.44s ==============================
